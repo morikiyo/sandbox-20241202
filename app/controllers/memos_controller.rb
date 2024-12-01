@@ -2,6 +2,7 @@ class MemosController < ApplicationController
   before_action :set_memo, only: %i[ show edit update destroy ]
 
   def index
+    flash.keep if turbo_frame_request?
     @memos = Memo.order(id: :desc)
   end
 
