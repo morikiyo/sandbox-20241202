@@ -1,0 +1,24 @@
+<%= form_with(model: memo) do |form| %>
+  <% if memo.errors.any? %>
+    <div class="text-danger">
+      <h2><%= pluralize(memo.errors.count, "error") %> prohibited this memo from being saved:</h2>
+
+      <ul>
+        <% memo.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.text_field :body, class: "form-control" %>
+  </div>
+
+  <div class="d-flex gap-3 align-items-center">
+    <%= form.submit class: "btn btn-primary" %>
+    <% if memo.persisted? %>
+      <%= link_to "Cancel", memo_path(memo) %>
+    <% end %>
+  </div>
+<% end %>

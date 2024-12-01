@@ -1,0 +1,35 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Memos" %>
+
+<h1>Memos</h1>
+
+<div class="row mb-4">
+  <table class="col-12 col-md-6 table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Memo</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @memos.each do |memo| %>
+        <tr>
+          <td><%= memo.id %></td>
+          <td>
+            <%= turbo_frame_tag memo, src: memo_path(memo), loading: :lazy %>
+          <td>
+            <%= button_to "Destroy", memo, method: :delete, class: "btn btn-sm btn-danger", data: { turbo_confirm: "Are you sure?" } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-6">
+    <%= turbo_frame_tag Memo.new, src: new_memo_path %>
+  </div>
+</div>
