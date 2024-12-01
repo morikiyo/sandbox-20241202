@@ -2,9 +2,15 @@
 
 <% content_for :title, "Memos" %>
 
-<h1>Memos</h1>
+<div class="row mb-5">
+  <div class="col-12 col-md-6">
+    <%= turbo_frame_tag Memo.new, src: new_memo_path %>
+  </div>
+</div>
 
-<div class="row mb-4">
+<h2>Memos</h2>
+
+<div class="row">
   <table class="col-12 col-md-6 table table-striped">
     <thead>
       <tr>
@@ -26,10 +32,4 @@
       <% end %>
     </tbody>
   </table>
-</div>
-
-<div class="row">
-  <div class="col-12 col-md-6">
-    <%= turbo_frame_tag Memo.new, src: new_memo_path %>
-  </div>
 </div>
